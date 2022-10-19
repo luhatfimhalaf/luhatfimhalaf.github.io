@@ -1,0 +1,49 @@
+.body {
+  min-height: 3000px;
+}
+
+.jumbotron {
+  padding-top: 6rem;
+  background-color: #272727;
+}
+.lead {
+  color: azure;
+}
+.display-4 {
+  color: azure;
+}
+
+#about {
+  background-color: #f3f4f5;
+}
+
+#projects {
+  background-color: #272727;
+  color: azure;
+}
+
+.card {
+  align-items: center;
+}
+
+.card-text {
+  color: #272727;
+}
+
+#contact {
+  background-color: #f3f4f5;
+}
+
+.Myfooter {
+  background-color: #cbe100;
+  text-align: center;
+}
+
+section {
+  padding-top: 6rem;
+}
+
+.Textmyproject {
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
