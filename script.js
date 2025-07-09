@@ -880,3 +880,71 @@ function initNavbarEnhancements() {
 
 // Initialize enhanced features
 initNavbarEnhancements();
+
+// Contact Form Submission to Google Spreadsheet
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const projectType = formData.get('projectType');
+            const message = formData.get('message');
+            
+            // Validate form
+            if (!name || !email || !projectType || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Get submit button and show loading state
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Prepare data for Google Apps Script
+                const dataToSend = {
+                    name: name,
+                    email: email,
+                    projectType: projectType,
+                    description: message,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Send to Google Apps Script Web App
+                // Replace YOUR_GOOGLE_APPS_SCRIPT_URL with your actual deployment URL
+                const response = await fetch('AKfycbzUcrQ7DvcAvlgfPMEvaW2vCwzAaay_p9lj5FrjTodQUTxmZfCSJgr5fTfzpe7Hl7TmDg', {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dataToSend)
+                });
+                
+                if (response.ok) {
+                    // Success
+                    alert('Thank you! Your message has been sent successfully. I will get back to you soon.');
+                    contactForm.reset();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Sorry, there was an error sending your message. Please try again or contact me directly via email.');
+            } finally {
+                // Reset button
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+});
