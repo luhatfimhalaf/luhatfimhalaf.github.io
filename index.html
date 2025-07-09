@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miftahul Falah | Personal Portofolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h1>Welcome to My Portfolio</h1>
+        </div>
+    </div>
+
+    <div class="main-content" style="opacity:0;">
+    <!-- Modern Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <span class="brand-text">Portfolio</span>
+                <div class="brand-dot"></div>
+            </div>
+            
+            <ul class="navbar-menu" id="navbar-menu">
+                <li class="navbar-item">
+                    <a href="#home" class="navbar-link active">
+                        <span class="link-text">Home</span>
+                        <span class="link-underline"></span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#about" class="navbar-link">
+                        <span class="link-text">About</span>
+                        <span class="link-underline"></span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#experience" class="navbar-link">
+                        <span class="link-text">Experience</span>
+                        <span class="link-underline"></span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#projects" class="navbar-link">
+                        <span class="link-text">Projects</span>
+                        <span class="link-underline"></span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#services" class="navbar-link">
+                        <span class="link-text">Services</span>
+                        <span class="link-underline"></span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#contact" class="navbar-link">
+                        <span class="link-text">Contact</span>
+                        <span class="link-underline"></span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="navbar-actions">
+                <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing" target="_blank" class="navbar-cta">
+                    <span>Resume</span>
+                    <i class="fas fa-download"></i>
+                </a>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-toggle" id="mobile-toggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-image" data-aos="fade-right">
+                    <img src="https://via.placeholder.com/300x300/059669/ffffff?text=Your+Photo" alt="Profile Picture" class="profile-img">
+                </div>
+                <div class="hero-text" data-aos="fade-left">
+                    <h1>Hi, I'm <span class="highlight">Your Name</span> 👋</h1>
+                    <h2>Full Stack Developer specializing in <span class="laravel">Laravel</span></h2>
+                    <p class="hero-subtitle">
+                        <span id="typewriter"></span>
+                        <span class="cursor">|</span>
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">View Projects</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>About Me</h2>
+                <p>Get to know more about my skills and experience</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <p>I'm a passionate Full Stack Developer with 3+ years of experience building scalable web applications. My expertise lies in Laravel ecosystem, creating seamless user experiences from database to UI.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h3>50+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>100%</h3>
+                            <p>Client Satisfaction</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>3+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skills-grid" data-aos="fade-left">
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="fab fa-laravel"></i>
+                        </div>
+                        <h4>Laravel Framework</h4>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="fab fa-js-square"></i>
+                        </div>
+                        <h4>JavaScript/Vue.js</h4>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Database Design</h4>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h4>RESTful API</h4>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="fab fa-docker"></i>
+                        </div>
+                        <h4>Docker & DevOps</h4>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4>Clean Code</h4>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="93%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Professional Journey</h2>
+                <p>My career path and achievements in web development</p>
+            </div>
+            <div class="experience-timeline">
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022 - Present</div>
+                        <h3>Senior Full Stack Developer</h3>
+                        <h4>PT. Tech Innovation Indonesia</h4>
+                        <p>Leading development of enterprise-level web applications using Laravel ecosystem. Architected scalable solutions for 100k+ users and mentored junior developers.</p>
+                        <ul class="timeline-achievements">
+                            <li>🚀 Increased application performance by 40% through optimization</li>
+                            <li>📈 Led team of 5 developers on multiple high-impact projects</li>
+                            <li>⚡ Implemented CI/CD pipelines reducing deployment time by 60%</li>
+                            <li>🔧 Built microservices architecture serving 500k+ requests daily</li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span class="tech-badge">Laravel 10</span>
+                            <span class="tech-badge">Vue.js 3</span>
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">AWS</span>
+                            <span class="tech-badge">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - 2022</div>
+                        <h3>Full Stack Developer</h3>
+                        <h4>CV. Digital Solutions</h4>
+                        <p>Developed custom web applications for SME clients. Specialized in e-commerce platforms and business management systems with focus on user experience.</p>
+                        <ul class="timeline-achievements">
+                            <li>🛍️ Built 15+ e-commerce platforms with payment gateway integration</li>
+                            <li>📊 Created real-time analytics dashboards for business insights</li>
+                            <li>🔐 Implemented secure authentication and authorization systems</li>
+                            <li>📱 Developed responsive designs for optimal mobile experience</li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span class="tech-badge">Laravel 9</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">Bootstrap</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020 - 2021</div>
+                        <h3>Junior Web Developer</h3>
+                        <h4>Startup Teknologi Nusantara</h4>
+                        <p>Started my professional journey building web applications and learning industry best practices. Contributed to various client projects and internal tools.</p>
+                        <ul class="timeline-achievements">
+                            <li>💻 Developed 10+ client websites with modern design principles</li>
+                            <li>🎯 Achieved 98% client satisfaction rate on delivered projects</li>
+                            <li>📚 Mastered Laravel framework and modern JavaScript</li>
+                            <li>🤝 Collaborated with cross-functional teams on product development</li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span class="tech-badge">PHP</span>
+                            <span class="tech-badge">Laravel 8</span>
+                            <span class="tech-badge">jQuery</span>
+                            <span class="tech-badge">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2019 - 2020</div>
+                        <h3>Freelance Web Developer</h3>
+                        <h4>Self-Employed</h4>
+                        <p>Began freelancing while completing education. Built websites for local businesses and gained practical experience in client communication and project management.</p>
+                        <ul class="timeline-achievements">
+                            <li>🌟 Completed 25+ freelance projects successfully</li>
+                            <li>💼 Built portfolio of diverse web applications</li>
+                            <li>📈 Grew client base through referrals and quality work</li>
+                            <li>🎓 Self-taught modern web development technologies</li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span class="tech-badge">HTML/CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">PHP</span>
+                            <span class="tech-badge">WordPress</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Featured Projects</h2>
+                <p>Here are some of my recent works that showcase my skills</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/059669/ffffff?text=E-Commerce+Platform" alt="E-Commerce Platform">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link" title="Source Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">🚀 Web Application</div>
+                        <h3>E-Commerce Platform</h3>
+                        <p>Built a complete online marketplace using Laravel, featuring multi-vendor support, payment gateway integration, and real-time inventory management.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Laravel 10</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Stripe API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-item reverse" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/10b981/ffffff?text=Analytics+Dashboard" alt="Analytics Dashboard">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link" title="Source Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">📊 Business Intelligence</div>
+                        <h3>Analytics Dashboard</h3>
+                        <p>Developed a comprehensive business intelligence dashboard with real-time data visualization and automated reporting capabilities.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Chart.js</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/34d399/ffffff?text=Hospital+Management" alt="Hospital Management System">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link" title="Source Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">🏥 Healthcare System</div>
+                        <h3>Hospital Management System</h3>
+                        <p>Created an integrated healthcare management system handling patient records, appointment scheduling, and billing automation.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Queue Jobs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>What I Can Do For You</h2>
+                <p>Comprehensive solutions for your digital needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend Development</h3>
+                    <p>Robust server-side solutions with Laravel, focusing on scalability, security, and performance optimization.</p>
+                    <ul>
+                        <li>API Development</li>
+                        <li>Database Design</li>
+                        <li>Authentication Systems</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Frontend Integration</h3>
+                    <p>Seamless UI/UX implementation using modern JavaScript frameworks and responsive design principles.</p>
+                    <ul>
+                        <li>Vue.js/React Development</li>
+                        <li>Responsive Design</li>
+                        <li>Interactive UI Components</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Deployment & DevOps</h3>
+                    <p>Complete project deployment with CI/CD pipelines, server configuration, and monitoring setup.</p>
+                    <ul>
+                        <li>Docker Containerization</li>
+                        <li>CI/CD Pipelines</li>
+                        <li>Server Management</li>
+                        <li>Monitoring & Logging</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Let's Build Something Amazing Together</h2>
+                <p>Ready to bring your ideas to life? Let's discuss your next project</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>your.email@domain.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+62 812-3456-7890</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Jakarta, Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="contact-cta">
+                        <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Download My CV
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="projectType" name="projectType" required>
+                                <option value="">Select Project Type</option>
+                                <option value="web-app">🚀 Web Application</option>
+                                <option value="laravel-project">⚡ Laravel Project</option>
+                                <option value="api-development">🔗 API Development</option>
+                                <option value="ecommerce">🛍️ E-Commerce Platform</option>
+                                <option value="crm-system">📊 CRM System</option>
+                                <option value="inventory-management">📦 Inventory Management</option>
+                                <option value="dashboard-analytics">📈 Dashboard & Analytics</option>
+                                <option value="mobile-app-backend">📱 Mobile App Backend</option>
+                                <option value="database-design">🗄️ Database Design</option>
+                                <option value="system-integration">🔄 System Integration</option>
+                                <option value="performance-optimization">⚡ Performance Optimization</option>
+                                <option value="code-review">🔍 Code Review & Consultation</option>
+                                <option value="maintenance-support">🛠️ Maintenance & Support</option>
+                                <option value="custom-solution">🎯 Custom Solution</option>
+                                <option value="other">💡 Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 Your Name. Crafted with Laravel & Love ❤️</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" target="_blank" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    </div> <!-- END .main-content -->
+</body>
+</html>
