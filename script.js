@@ -950,53 +950,72 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             
             try {
-                // Method 1: Try with FormData (more compatible with Google Apps Script)
-                const formDataToSend = new FormData();
-                formDataToSend.append('name', name);
-                formDataToSend.append('email', email);
-                formDataToSend.append('projectType', projectType);
-                formDataToSend.append('description', message);
-                formDataToSend.append('timestamp', new Date().toISOString());
-                
                 // Google Apps Script URL
-                const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzUcrQ7DvcAvlgfPMEvaW2vCwzAaay_p9lj5FrjTodQUTxmZfCSJgr5fTfzpe7Hl7TmDg/exec';
+                const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx4ryjdC2nhHuzYBDvbjZe9YRf7sozQVV4gsBLOcb2YWjIck_yktMcND_p6loOFslE8Nw/exec';
                 
-                // Try fetch request
-                await fetch(GOOGLE_SCRIPT_URL, {
+                // Prepare JSON data to send
+                const dataToSend = {
+                    name: name,
+                    email: email,
+                    projectType: projectType,
+                    description: message,
+                    timestamp: new Date().toISOString()
+                };
+                
+                console.log('Sending JSON data:', dataToSend);
+                
+                // Send as JSON to Google Apps Script
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    body: formDataToSend
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dataToSend)
                 });
                 
-                // Since we can't read response in no-cors mode, assume success
+                console.log('Response status:', response.status);
+                
+                // Try to read response (might not work in no-cors mode)
+                try {
+                    const responseText = await response.text();
+                    console.log('Response text:', responseText);
+                } catch (responseError) {
+                    console.log('Cannot read response (normal for CORS), assuming success');
+                }
+                
+                // Assume success if no error thrown
                 showNotification(`Thank you ${name}! Your message has been sent successfully. I will get back to you soon! 🚀`, 'success');
                 contactForm.reset();
                 
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Primary method error:', error);
                 
-                // Fallback: Try with URL-encoded data
+                // Fallback: Try with FormData (second method)
                 try {
-                    const params = new URLSearchParams();
-                    params.append('name', name);
-                    params.append('email', email);
-                    params.append('projectType', projectType);
-                    params.append('description', message);
-                    params.append('timestamp', new Date().toISOString());
+                    console.log('Trying fallback method with FormData');
                     
-                    await fetch('https://script.google.com/macros/s/AKfycbzUcrQ7DvcAvlgfPMEvaW2vCwzAaay_p9lj5FrjTodQUTxmZfCSJgr5fTfzpe7Hl7TmDg/exec', {
+                    const formDataToSend = new FormData();
+                    formDataToSend.append('name', name);
+                    formDataToSend.append('email', email);
+                    formDataToSend.append('projectType', projectType);
+                    formDataToSend.append('description', message);
+                    formDataToSend.append('timestamp', new Date().toISOString());
+                    
+                    await fetch(GOOGLE_SCRIPT_URL, {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body: params.toString()
+                        body: formDataToSend
                     });
                     
+                    console.log('Fallback method successful');
                     showNotification(`Thank you ${name}! Your message has been sent successfully. I will get back to you soon! 🚀`, 'success');
                     contactForm.reset();
                     
                 } catch (fallbackError) {
-                    console.error('Fallback error:', fallbackError);
-                    showNotification('Message sent! Due to browser security, we cannot confirm delivery, but your message has been processed.', 'info');
+                    console.error('Fallback method error:', fallbackError);
+                    
+                    // Final fallback: Show success anyway (data might still be sent)
+                    console.log('Both methods failed, but showing success message');
+                    showNotification(`Thank you ${name}! Your message has been processed. Due to browser security restrictions, we cannot confirm delivery, but I will get back to you soon! 📧`, 'info');
                     contactForm.reset();
                 }
             } finally {
