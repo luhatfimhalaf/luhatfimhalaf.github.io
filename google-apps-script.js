@@ -16,17 +16,67 @@ const SHEET_NAME = 'Form Responses'; // Nama sheet, sesuaikan jika perlu
  */
 function doPost(e) {
   try {
-    // Parse JSON data dari request
-    const data = JSON.parse(e.postData.contents);
+    let data;
+    
+    // Handle different content types
+    if (e.postData) {
+      const contentType = e.postData.type;
+      
+      if (contentType === 'application/json') {
+        // JSON data
+        data = JSON.parse(e.postData.contents);
+      } else if (contentType === 'application/x-www-form-urlencoded') {
+        // Form URL encoded data
+        data = {};
+        const params = e.postData.contents.split('&');
+        params.forEach(param => {
+          const [key, value] = param.split('=');
+          data[decodeURIComponent(key)] = decodeURIComponent(value);
+        });
+      } else {
+        // Try to parse as form data from parameters
+        data = {
+          name: e.parameter.name,
+          email: e.parameter.email,
+          projectType: e.parameter.projectType,
+          description: e.parameter.description,
+          timestamp: e.parameter.timestamp || new Date().toISOString()
+        };
+      }
+    } else {
+      // Fallback to parameters
+      data = {
+        name: e.parameter.name,
+        email: e.parameter.email,
+        projectType: e.parameter.projectType,
+        description: e.parameter.description,
+        timestamp: e.parameter.timestamp || new Date().toISOString()
+      };
+    }
+    
+    // Log received data for debugging
+    console.log('Received data:', data);
     
     // Validasi data
     if (!data.name || !data.email || !data.projectType || !data.description) {
+      console.log('Missing fields:', {
+        name: !!data.name,
+        email: !!data.email,
+        projectType: !!data.projectType,
+        description: !!data.description
+      });
+      
       return ContentService
         .createTextOutput(JSON.stringify({
           success: false,
           error: 'Missing required fields'
         }))
-        .setMimeType(ContentService.MimeType.JSON);
+        .setMimeType(ContentService.MimeType.JSON)
+        .setHeaders({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        });
     }
     
     // Simpan data ke spreadsheet
@@ -38,14 +88,24 @@ function doPost(e) {
           success: true,
           message: 'Data saved successfully'
         }))
-        .setMimeType(ContentService.MimeType.JSON);
+        .setMimeType(ContentService.MimeType.JSON)
+        .setHeaders({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        });
     } else {
       return ContentService
         .createTextOutput(JSON.stringify({
           success: false,
           error: result.error
         }))
-        .setMimeType(ContentService.MimeType.JSON);
+        .setMimeType(ContentService.MimeType.JSON)
+        .setHeaders({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        });
     }
     
   } catch (error) {
@@ -53,10 +113,30 @@ function doPost(e) {
     return ContentService
       .createTextOutput(JSON.stringify({
         success: false,
-        error: 'Internal server error'
+        error: 'Internal server error: ' + error.toString()
       }))
-      .setMimeType(ContentService.MimeType.JSON);
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type'
+      });
   }
+}
+
+/**
+ * Fungsi untuk menangani HTTP OPTIONS request (CORS preflight)
+ */
+function doOptions(e) {
+  return ContentService
+    .createTextOutput('')
+    .setMimeType(ContentService.MimeType.TEXT)
+    .setHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Max-Age': '3600'
+    });
 }
 
 /**
